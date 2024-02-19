@@ -1,3 +1,6 @@
+MindMentor- Mental Health Matters:
+This website serves as a guide to mental wellness. In this era where all are suffering from mental health issues, this website aims to provide solutions for the same. 
+
 The pages of this website are:
 1)1.html- This is the first page of the website from where the user can sign up or log in. It also lists the features of the website.
 2)quiz.html- This is the self-assessment page where the user will be required to answer a few questions and their mental health would be assessed upon it. This page pops after the sign-up page only and hence the user can access it only during their sign-up, that is the first time.
