@@ -1,5 +1,6 @@
 MindMentor- Mental Health Matters:
 This website serves as a guide to mental wellness. In this era where all are suffering from mental health issues, this website aims to provide solutions for the same. 
+This website is built using html, css and javascript. It has also made use of google services such as google cloud, google maps platform and firebase.
 
 The pages of this website are:
 1)1.html- This is the first page of the website from where the user can sign up or log in. It also lists the features of the website.
