@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINDMENTOR</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Goal Tracking and Challenges</h1>
+        <div class="tabs">
+            <button id="goals-tab" class="tab-btn active" onclick="showGoals()">Goals</button>
+            <button id="challenges-tab" class="tab-btn" onclick="showChallenges()">Challenges</button>
+        </div>
+        <div id="goals-container"></div>
+        <div id="challenges-container" style="display: none;"></div>
+        <div id="add-goal-container" style="display: none;">
+            <!-- Add Goal Button -->
+            <button class="add-goal-btn" onclick="addGoal()">Add New Goal</button>
+        </div>
+    </div>
+
+    <script>
+        // Sample challenges presented to the user
+        const challenges = [
+            { title: '30-Day Yoga Challenge', description: 'Complete a yoga session daily for 30 days' },
+            { title: 'Book Reading Challenge', description: 'Read 5 new books in the next 2 months' }
+        ];
+
+        // Function to show goals
+        function showGoals() {
+            document.getElementById('goals-tab').classList.add('active');
+            document.getElementById('challenges-tab').classList.remove('active');
+            document.getElementById('challenges-container').style.display = 'none';
+            document.getElementById('goals-container').style.display = 'block';
+            document.getElementById('add-goal-container').style.display = 'block';
+        }
+
+        // Function to show challenges
+        function showChallenges() {
+            document.getElementById('challenges-tab').classList.add('active');
+            document.getElementById('goals-tab').classList.remove('active');
+            document.getElementById('challenges-container').style.display = 'block';
+            document.getElementById('goals-container').style.display = 'none';
+            document.getElementById('add-goal-container').style.display = 'none';
+        }
+
+        // Function to populate goals container
+        function populateGoals() {
+            const goalsContainer = document.getElementById('goals-container');
+            goalsContainer.innerHTML = ''; // Clear existing content
+            // Sample user goals
+            const userGoals = JSON.parse(localStorage.getItem('userGoals')) || [];
+            userGoals.forEach((goal, index) => {
+                const goalDiv = createGoalDiv(goal, index);
+                goalsContainer.appendChild(goalDiv);
+            });
+        }
+
+        // Function to create a goal div
+        function createGoalDiv(goal, index) {
+            const goalDiv = document.createElement('div');
+            goalDiv.classList.add('goal');
+            goalDiv.innerHTML = `
+                <h2>${goal.title}</h2>
+                <p>${goal.description}</p>
+                <button onclick="completeGoal(${index})">Completed</button>
+            `;
+            return goalDiv;
+        }
+
+        // Function to complete a goal
+        function completeGoal(index) {
+            const userGoals = JSON.parse(localStorage.getItem('userGoals')) || [];
+            userGoals.splice(index, 1);
+            localStorage.setItem('userGoals', JSON.stringify(userGoals));
+            populateGoals();
+        }
+
+        // Function to add a new goal
+        function addGoal() {
+            const title = prompt('Enter goal title:');
+            const description = prompt('Enter goal description:');
+            const newGoal = { title, description };
+            const userGoals = JSON.parse(localStorage.getItem('userGoals')) || [];
+            userGoals.push(newGoal);
+            localStorage.setItem('userGoals', JSON.stringify(userGoals));
+            populateGoals();
+        }
+
+        // Function to populate challenges container
+        function populateChallenges() {
+            const challengesContainer = document.getElementById('challenges-container');
+            challengesContainer.innerHTML = ''; // Clear existing content
+            challenges.forEach(challenge => {
+                const challengeDiv = createChallengeDiv(challenge);
+                challengesContainer.appendChild(challengeDiv);
+            });
+        }
+
+        // Function to create a challenge div
+        function createChallengeDiv(challenge) {
+            const challengeDiv = document.createElement('div');
+            challengeDiv.classList.add('challenge');
+            challengeDiv.innerHTML = `
+                <h2>${challenge.title}</h2>
+                <p>${challenge.description}</p>
+            `;
+            return challengeDiv;
+        }
+
+        // Initial population of goals and challenges containers
+        populateGoals();
+        populateChallenges();
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background-color: green;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .goal,
+        .challenge {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .add-goal-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            margin-left: 120px;
+        }
+
+        .add-goal-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="1.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINDMENTOR</title>
+  <style>
+    .title {
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-size: xx-large;
+      background-color: black;
+      color: white;
+      font-weight: bolder;
+      height: 170px;
+      border: none;
+      padding-top: 30px;
+      margin-left: 0px ;
+      justify-content: center;
+    }
+    
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      font-size: 18px;
+      color: #333;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .close-btn1 {
+      cursor: pointer;
+      font-size: 18px;
+      position: absolute;
+      top: 120px;
+      right: 250px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <header class="title">
+    <p>MINDMENTOR</p>
+    <button class="sign" id="popupButton" onclick="openPopup()">Sign Up</button>
+  </header>
+  <br>
+  <br>
+  <main>
+    <div class="image">
+        <img class="img1" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/mm.png?alt=media&token=f322c433-8de1-42e4-987b-73c25331429a">
+    </div>
+    <br>
+    <label class="container">
+      <input class="email" type="email" id="loginEmail" placeholder="Enter your email address" required></input>
+      <input type="submit" class="button1" onclick="navigateTo2Html()" value="Log in"></input>
+    </label>
+    
+    <br>
+    <br>
+    <div class="box1">
+    <h1 class="what">
+        What can MindMentor help you with?
+    </h1>
+    <p class="p-one">
+        Life is a journey, and we're here to support you every step of the way. MindMentor is your dedicated companion on the road to mental wellness, offering a range of tools and resources designed to empower you to live your best life
+    </p>
+    <p class="p-two">Transform Your Mind, Transform Your Life </p>
+    </div>
+    <br>
+    <h2 class="articles">Sign up for free to access these features</h2>
+    <div class="gallery">
+        <div class="row">
+            <div class="column">
+              <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/Screenshot%20(300).png?alt=media&token=d5de6e67-f172-4119-bfa6-483e3ca5c5a6"  style="width:50%">
+            </div>
+            <div class="column">
+              <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/Screenshot%20(301).png?alt=media&token=2bed7db9-4f18-4892-8105-7997c96bd636"  style="width:50%">
+            </div>
+            <div class="column">
+              <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/Screenshot%20(302).png?alt=media&token=b6625dea-c92d-49d5-b3a5-d7b0d297225c"  style="width:50%">
+            </div>
+            
+            <div class="column">
+                <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/Screenshot%20(304).png?alt=media&token=57dbfef9-1836-4fb2-9865-e7ced837e6cf"  style="width:50%">
+            </div>
+            <div class="column">
+                <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/Screenshot%20(305).png?alt=media&token=f9c3d10a-3434-40f3-858c-ed6d49ec2796"  style="width:50%">
+            </div>
+        </div>
+        <div class="row2">
+            <div class="column">
+              <h3>Assess yourself</h3>
+              <p class="data">Complete a quick survey to get a snapshot of your current mental health status</p>
+            </div>
+            <div class="column">
+            <h3>Find your balance</h3>
+             <p class="data">Use our guided exercises to develop skills that promote resilience and emotional well-being</p>
+            </div>
+            <div class="column">
+            <h3>Expert Advice</h3>
+              <p class="data">Read articles and listen to podcasts or watch videos from our team of mental health experts</p>
+            </div>
+            
+            <div class="column">
+                <h3>Build healthier habits</h3>
+                <p class="data">Explore our library of tools and resources designed to help you live a more balanced life</p>
+            </div>
+            <div class="column">
+                <h3>Track your progress</h3>
+                <p class="data">Monitor your mental wellness over time and see how your efforts are paying off</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h2 class="articles">Featured Articles</h2>
+    <br>
+    <div class="gallery">
+        <div class="row">
+            <div class="column1">
+              <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/1.png?alt=media&token=aef4d605-f862-4c2e-b420-5e0b5a1e3779"  style="width:50%">
+            </div>
+            <div class="column1">
+              <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/2.png?alt=media&token=98fe0575-a6d9-40b6-bde2-ccfbcfce1aea"  style="width:50%">
+            </div>
+            <div class="column1">
+              <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/3.png?alt=media&token=6675addf-3133-489b-9375-7e0326cdeefb"  style="width:50%">
+            </div>
+            <div class="column1">
+                <img class="img2" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/4.png?alt=media&token=c1c2ebb8-9557-401f-8be7-bc69d9c691eb"  style="width:50%">
+            </div>
+        </div>
+        <div class="row2">
+            <div class="column1">
+              <h3>The Science of Gratitude for well-being</h3>
+              <p class="data">Learn how practising gratitude can improve your mental health and well-being</p>
+            </div>
+            <div class="column1">
+            <h3>Coping Strategies for Stressful Situations</h3>
+             <p class="data">Discover effective ways to manage stress and reduce its negative impact on your life</p>
+            </div>
+            <div class="column1">
+            <h3>Relationship between Mindfulness and Resilience</h3>
+              <p class="data">Explore the connection between mindfulness & resilience and how it can benefit your mental health </p>
+            </div>
+            
+            <div class="column1">
+                <h3>How to Set Healthy Boundaries in Life</h3>
+                <p class="data">Find out how to establish and maintain healthy boundaries in your relationships and work</p>
+            </div>
+            
+        </div>
+    </div>
+</main>
+<br>
+<br>
+<footer class="foot">
+  <div class="row">
+    <div class="column2">
+      <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/my-first-projects-8b061.appspot.com/o/WhatsApp%20Image%202024-02-14%20at%2022.52.39%20(1).jpeg?alt=media&token=aec138cc-e6b7-47c9-a604-ce55a21370fa">
+    </div>
+    <div class="column2">
+      <p> Mental health is not a destination, but a process. It's about how you drive, not where you're going.</p>
+    </div>
+  </div>
+</footer>
+  <div class="overlay" id="overlay">
+    <div class="popup">
+      <span class="close-btn" onclick="closePopup()">x</span>
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <button class="close-btn1" onclick="closePopup()">X</button>
+        <label for="email" class="textt">E-mail   :</label>
+        <input class="email" type="email" id="email" placeholder="Enter your email address" required>
+        <br>
+        <br>
+        <label for="password" class="textt">Password:</label>
+        <input class="password" type="password" id="password" placeholder="Enter your password" required>
+        <br>
+        <br>
+        <input type="submit" class="sign" value="Sign Up">
+      </form>
+    </div>
+  </div>
+  <script>
+    function openPopup() {
+      document.getElementById('overlay').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    const signupForm = document.getElementById('signupForm');
+    signupForm.addEventListener('submit', (event) => {
+      event.preventDefault(); 
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      if (password.length > 6) {
+      
+        window.location.href = "quiz.html"; 
+      } else {
+        
+        alert("The password should have more than 6 characters.");
+      }
+    });
+function navigateTo2Html() {
+    
+    window.location.href = "2.html";
+  }
+  </script>
+</body>
+</html>

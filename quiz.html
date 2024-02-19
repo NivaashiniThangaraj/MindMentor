@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Your existing head content here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINDMENTOR</title>
+</head>
+<body>
+  <div class="container">
+    <h1>SELF-ASSESSMENT</h1>
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <button id="submit" class="button">Next</button>
+    <button id="retry" class="button-hide">Retry</button>
+    <button id="go-to-mood-tracker" class="button-hide">Go to Next Page</button>
+  </div>
+
+  <style>
+    /* Your existing styles here */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #b9b3a9;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 450px;
+  padding: 20px;
+  margin-top: 80px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  height: 400px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.question {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.options {
+  margin-bottom: 20px;
+}
+
+.option {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.button-hide {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #428bca;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+  margin-top: 200px;
+}
+
+.button {
+    display: inline-block;
+  padding: 10px 20px;
+  background-color: #428bca;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #3071a9;
+}
+
+.result {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.hide{
+  display: none;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #428bca; /* Adjust color as needed */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.button:hover {
+  background-color: #3071a9;
+}
+  </style>
+
+  <script>
+    const quizData = [
+    {
+    question: 'I am not able to handle the level of stress (especially, work stress) I experience',
+    options: ['Always', 'Sometimes', 'Never'],
+  },
+  {
+    question: 'I do not feel good about the choices I have made in my life',
+    options: ['Always', 'Sometimes', 'Never'],
+  },
+  {
+    question: 'I do not have a sense of purpose in my life',
+    options: ['Always', 'Sometimes', 'Never'],
+    
+  },
+  {
+    question: 'I do not have strong relationships with people I care about',
+    options: ['Always', 'Sometimes', 'Never'],
+    
+  },
+  {
+    question: 'I am self-critical and engage in negative self-talk',
+    options: ['Always', 'Sometimes', 'Never'],
+    
+  },
+  {
+    question: 'I cannot get beyond long-past traumatic events or significant losses.',
+    options: ['Always', 'Sometimes', 'Never'],
+    
+  },
+  {
+    question: "I've noticed changes in my appetite or sleep patterns relative to when I was at my best.",
+    options: ['Always', 'Sometimes', 'Never'],
+    
+  },
+  {
+    question: 'I procrastinate and/or avoid dealing with important things in my life',
+    options: ['Always', 'Sometimes', 'Never'],
+    
+  },
+  {
+    question: 'My mood is unstable',
+    options:['Always', 'Sometimes', 'Never'],
+    
+  },
+  {
+    question: 'I feel like I am not living up to my own expectations, and those of others.',
+    options: ['Always', 'Sometimes', 'Never'],
+    
+  },
+    ];
+
+    const quizContainer = document.getElementById('quiz');
+    const resultContainer = document.getElementById('result');
+    const submitButton = document.getElementById('submit');
+    const retryButton = document.getElementById('retry');
+    const goToMoodTrackerBtn = document.getElementById('go-to-mood-tracker');
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function displayQuestion() {
+      const questionData = quizData[currentQuestion];
+
+      const questionElement = document.createElement('div');
+      questionElement.className = 'question';
+      questionElement.innerHTML = questionData.question;
+
+      const optionsElement = document.createElement('div');
+      optionsElement.className = 'options';
+      
+
+      for (let i = 0; i < questionData.options.length; i++) {
+        const option = document.createElement('label');
+        option.className = 'option';
+
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'quiz';
+        radio.value = questionData.options[i];
+
+        const optionText = document.createTextNode(questionData.options[i]);
+
+        option.appendChild(radio);
+        option.appendChild(optionText);
+        optionsElement.appendChild(option);
+      }
+
+      quizContainer.innerHTML = '';
+      quizContainer.appendChild(questionElement);
+      quizContainer.appendChild(optionsElement);
+    }
+
+    function checkAnswer() {
+      const selectedOption = document.querySelector('input[name="quiz"]:checked');
+      if (selectedOption) {
+        const answer = selectedOption.value;
+        if (answer === 'Always') {
+          score += 1;
+        } else if (answer === 'Sometimes') {
+          score += 2;
+        } else if (answer === 'Never') {
+          score += 3;
+        }
+
+        currentQuestion++;
+        selectedOption.checked = false;
+        if (currentQuestion < quizData.length) {
+          displayQuestion();
+        } else {
+          displayResult();
+        }
+      }
+    }
+
+    function displayResult() {
+      quizContainer.style.display = 'none';
+      submitButton.style.display = 'none';
+      resultContainer.innerHTML = `Result: ${getFinalResult()}`;
+      retryButton.style.display = 'inline-block';
+      if (currentQuestion === quizData.length) {
+        goToMoodTrackerBtn.style.display = 'inline-block';
+      }
+    }
+
+    function retryQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      quizContainer.style.display = 'block';
+      submitButton.style.display = 'inline-block';
+      retryButton.style.display = 'none';
+      goToMoodTrackerBtn.style.display = 'none';
+      resultContainer.innerHTML = '';
+      displayQuestion();
+    }
+
+    retryButton.style.display = currentQuestion === quizData.length ? 'inline-block' : 'none';
+    goToMoodTrackerBtn.style.display = currentQuestion === quizData.length ? 'inline-block' : 'none';
+
+    function getFinalResult() {
+      let resultText = '';
+      if (score >= 25 && score <= 30) {
+        resultText = 'Absolutely Normal';
+      } else if (score >= 20 && score < 25) {
+        resultText = 'Okay';
+      } else if (score >= 10 && score < 20) {
+        resultText = 'Your mental health seems to be deteriorating, it is highly essential that you take care of it and we are here to guide you through it.';
+      }
+      return resultText;
+    }
+
+    submitButton.addEventListener('click', checkAnswer);
+    retryButton.addEventListener('click', retryQuiz);
+    goToMoodTrackerBtn.addEventListener('click', () => {
+      // Ensure "moodtracker.html" exists in the correct directory
+      window.location.href = "2.html"; // Adjust file path if needed
+    });
+
+    displayQuestion();
+  </script>
+</body>
+</html>

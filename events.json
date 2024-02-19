@@ -1,0 +1,28 @@
+[
+    {
+      "name": "Google Devfest",
+      "location": { "lat": 11.0086370, "lng": 76.956934 },
+      "description": "A sample event description."
+    },
+    {
+      "name": "Hackathon2",
+      "location": { "lat": 11.0086370, "lng": 75.956934 },
+      "description": "Another sample event description."
+    },
+    {
+      "name": "Hackathon1",
+      "location": { "lat": 12.0086370, "lng": 75.956934 },
+      "description": "Another sample event description."
+    },
+    {
+      "name": "Hackathon3",
+      "location": { "lat": 10.0086370, "lng": 75.956934 },
+      "description": "Another sample event description."
+    },
+    {
+      "name": "Hackathon4",
+      "location": { "lat": 10.0086370, "lng": 77.956934 },
+      "description": "Another sample event description."
+    }
+  ]
+  
